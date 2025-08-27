@@ -51,8 +51,8 @@ public class Course {
 		return numberGrade;
 	}
 	
-	// Convert a letter grade into a number grade.
-	public double convertLetterGradeToNumeric(String letterGrade) {
+	// Convert a letter grade into a numeric grade.
+	public static double convertLetterGradeToNumeric(String letterGrade) {
 		if (letterGrade.equals("A+")) {
 			return 97;
 		} else if (letterGrade.equals("A")) {
@@ -85,7 +85,8 @@ public class Course {
 		}
 	}
 	
-	public String convertNumericGradeToLetter(double numericGrade) {
+	// Convert a numeric grade into a letter grade.
+	public static String convertNumericGradeToLetter(double numericGrade) {
 		if (numericGrade > 100) {
 			System.out.println("Numeric grade must be no more than 100! Returning null as letter grade.");
 			return null;

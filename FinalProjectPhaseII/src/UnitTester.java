@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class UnitTester {
 	public static void main(String[] args) {
 		// Create three objects to test. 
@@ -11,6 +14,7 @@ public class UnitTester {
 			testNumberGrade(course);
 			testMinCreditHours(course);
 			testMaxCreditHours(course);
+			testGradeConversion();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -51,5 +55,37 @@ public class UnitTester {
 		course.setMaxCreditHours(52);
 		boolean pass = 52 == course.getMaxCreditHours();
 		System.out.println("Can set/get maximum credit hours: " + pass);
+	}
+	
+	// Test converting between letter and numeric grades.
+	public static void testGradeConversion() {
+		// Initialize two letter grade arrays to compare. 
+		ArrayList<String> letterGrades = new ArrayList<String>();
+		letterGrades.addAll(Arrays.asList("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"));
+		ArrayList<String> convertedLetterGrades = new ArrayList<String>();
+		for (String letterGrade : letterGrades) {
+			// Convert letter --> numeric --> letter to see if it stays the same.
+			double numericGrade = Course.convertLetterGradeToNumeric(letterGrade);
+			String convertedLetterGrade = Course.convertNumericGradeToLetter(numericGrade);
+			convertedLetterGrades.add(convertedLetterGrade); 
+		}
+		// Compare arrays to see if they match. 
+		boolean pass = letterGrades.equals(convertedLetterGrades);
+		System.out.println("Grade conversions are internally consistent: " + pass);
+		
+		// Pass an invalid letter grade to see if it returns -1.
+		double numericGrade = Course.convertLetterGradeToNumeric("cat");
+		pass = numericGrade == -1;
+		System.out.println("Invalid letter grades convert to -1: " + pass);
+		
+		// Pass a numeric grade over 100 to see if it returns null. 
+		String letterGrade = Course.convertNumericGradeToLetter(101);
+		pass = letterGrade == null;
+		System.out.println("Numeric grades over 100 return null: " + pass);
+		
+		// Pass a numeric grade below 0 to see if it returns null. 
+		letterGrade = Course.convertNumericGradeToLetter(-1);
+		pass = letterGrade == null;
+		System.out.println("Numeric grades over 100 return null: " + pass);
 	}
 }
