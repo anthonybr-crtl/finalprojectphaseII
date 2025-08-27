@@ -9,6 +9,8 @@ public class UnitTester {
 			// Run all unit test methods. 
 			testCreditHours(course);
 			testNumberGrade(course);
+			testMinCreditHours(course);
+			testMaxCreditHours(course);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -34,6 +36,20 @@ public class UnitTester {
 	public static void testNumberGrade(Course course) {
 		course.setNumberGrade(83);
 		boolean pass = 83 == course.getNumberGrade();
-		System.out.println("Set/Get credit hours works: " + pass);
+		System.out.println("Can set/get number grade: " + pass);
+	}
+	
+	// Test set/get minimum credit hour methods. 
+	public static void testMinCreditHours(Course course) {
+		course.setMinCreditHours(21);
+		boolean pass = 21 == course.getMinCreditHours();
+		System.out.println("Can set/get minimum credit hours: " + pass);
+	}
+	
+	// Test set/get maximum credit hour methods. 
+	public static void testMaxCreditHours(Course course) {
+		course.setMaxCreditHours(52);
+		boolean pass = 52 == course.getMaxCreditHours();
+		System.out.println("Can set/get maximum credit hours: " + pass);
 	}
 }

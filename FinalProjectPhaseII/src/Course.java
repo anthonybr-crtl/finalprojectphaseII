@@ -11,7 +11,7 @@ public class Course {
 	}
 	
 	// Get a Course's minimum credit hours.
-	public double setMinCreditHours() {
+	public double getMinCreditHours() {
 		return this.minCreditHours;
 	}
 	
@@ -51,7 +51,7 @@ public class Course {
 		return numberGrade;
 	}
 	
-	// Convert a letter grade someone submits into a number grade.
+	// Convert a letter grade into a number grade.
 	public double convertLetterGradeToNumeric(String letterGrade) {
 		if (letterGrade.equals("A+")) {
 			return 97;
@@ -77,8 +77,50 @@ public class Course {
 			return 65;
 		} else if (letterGrade.equals("D-")) {
 			return 62;
-		} else {
+		} else if (letterGrade.equals("F")) {
 			return 50;
+		} else {
+			System.out.println("Letter grade was not recognized! Returning -1 as number grade.");
+			return -1;
+		}
+	}
+	
+	public String convertNumericGradeToLetter(double numericGrade) {
+		if (numericGrade > 100) {
+			System.out.println("Numeric grade must be no more than 100! Returning null as letter grade.");
+			return null;
+		} else if (numericGrade >= 97) {
+			return "A+";
+		} else if (numericGrade >= 93) {
+			return "A";
+		} else if (numericGrade >= 90) {
+			return "A-";
+		} else if (numericGrade >= 87) {
+			return "B+";
+		} else if (numericGrade >= 83) {
+			return "B";
+		} else if (numericGrade >= 80) {
+			return "B-";
+		} else if (numericGrade >= 77) {
+			return "C+";
+		} else if (numericGrade >= 73) { 
+			return "C";
+		} else if (numericGrade >= 70) {
+			return "C-";
+		} else if (numericGrade >= 67) {
+			return "D+";
+		} else if (numericGrade >= 63) {
+			return "D";
+		} else if (numericGrade >= 60) {
+			return "D-";
+		} else if (numericGrade >= 0) {
+			return "F";
+		} else if (numericGrade < 0) {
+			System.out.println("Numeric grade must be no less than 0! Returning null as letter grade.");
+			return null;
+		} else {
+			System.out.println("Numeric grade was not recognized! Returning null as letter grade.");
+			return null;
 		}
 	}
 }
