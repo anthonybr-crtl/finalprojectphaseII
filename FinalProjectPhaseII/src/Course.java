@@ -3,17 +3,27 @@ public class Course {
 	private double creditHours = 0;
 	private double numberGrade = 0;
 	
-	//method used to set a Course's credit hours.
+	// Set a Course's credit hours.
 	public void setCreditHours(double creditHours) {
 		this.creditHours = creditHours;
 	}
 	
-	//method used to set the number grade earned for a course.
+	// Get a Course's credit hours.
+	public double getCreditHours() {
+		return creditHours;
+	}
+	
+	// Set the number grade earned for a course.
 	public void setNumberGrade(double numberGrade) {
 		this.numberGrade = numberGrade;
 	}
 	
-	//method used to convert a letter grade someone submits into a number grade.
+	// Get the grade earned in a Course.
+	public double getNumberGrade() {
+		return numberGrade;
+	}
+	
+	// Convert a letter grade someone submits into a number grade.
 	public double convertLetterGradeToNumeric(String letterGrade) {
 		if (letterGrade.equals("A+")) {
 			return 97;
@@ -43,14 +53,4 @@ public class Course {
 			return 50;
 		}
 	}
-	
-	//method used to obtain the grade earned in a Course.
-	public double getNumberGrade() {
-		return numberGrade;
-	}
-	//method used to obtain a Course's credit hours.
-	public double getCreditHours() {
-		return creditHours;
-	}
-	
 }
