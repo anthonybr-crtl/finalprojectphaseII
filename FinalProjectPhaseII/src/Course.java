@@ -1,4 +1,3 @@
-
 public class Course {
 
 	private double creditHours = 0;
@@ -18,29 +17,29 @@ public class Course {
 	public double convertLetterGradeToNumeric(String letterGrade) {
 		if (letterGrade.equals("A+")) {
 			return 97;
-		}else if (letterGrade.equals("A")) {
+		} else if (letterGrade.equals("A")) {
 			return 95;
-		}else if (letterGrade.equals("A-")) {
+		} else if (letterGrade.equals("A-")) {
 			return 92;
-		}else if (letterGrade.equals("B+")) {
+		} else if (letterGrade.equals("B+")) {
 			return 87;
-		}else if (letterGrade.equals("B")) {
+		} else if (letterGrade.equals("B")) {
 			return 85;
-		}else if (letterGrade.equals("B-")) {
+		} else if (letterGrade.equals("B-")) {
 			return 82;
-		}else if (letterGrade.equals("C+")) {
+		} else if (letterGrade.equals("C+")) {
 			return 77;
-		}else if (letterGrade.equals("C")) {
+		} else if (letterGrade.equals("C")) {
 			return 75;
-		}else if (letterGrade.equals("C-")) {
+		} else if (letterGrade.equals("C-")) {
 			return 72;
-		}else if (letterGrade.equals("D+")) {
+		} else if (letterGrade.equals("D+")) {
 			return 67;
-		}else if (letterGrade.equals("D")) {
+		} else if (letterGrade.equals("D")) {
 			return 65;
-		}else if (letterGrade.equals("D-")) {
+		} else if (letterGrade.equals("D-")) {
 			return 62;
-		}else {
+		} else {
 			return 50;
 		}
 	}
