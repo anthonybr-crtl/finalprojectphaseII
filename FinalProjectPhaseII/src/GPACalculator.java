@@ -2,20 +2,14 @@ import java.util.ArrayList;
 
 public class GPACalculator {
 
-	/*
-	 * this method calculates a student's GPA by dividing the total quality points 
-	 * (the sum of GPA points for a course * credit hours for every course) 
-	 * with the total amount of credit hours (the sum of credit hours earned from every course).   
-	 * 
-	 * */
-	
+	// Calculates a student's GPA by dividing the total quality points 
 	public static double calculateGPA(Student student) {
 		double totalQualityPoints = calculateTQP(student.getNumberGrades(), student.getCourseCredits());
 		double totalCreditHours = calculateTCH(student.getNumberGrades());
 		return totalQualityPoints / totalCreditHours;
 	}
 	
-	// Calculates total quality points.
+	// Calculates total quality points (the sum of GPA points for a course weighted by credit hours for each course).
 	public static double calculateTQP(ArrayList<Double> numberGrades, ArrayList<Double> courseCredits) {
 		double TQP = 0;
 		for (int i = 0; i < numberGrades.size(); i++) {
@@ -50,11 +44,11 @@ public class GPACalculator {
 		return TQP;
 	}
 	
-	// Calculates total course hours.
+	// Calculates total credit hours (the sum from all courses). 
 	public static double calculateTCH(ArrayList<Double> courseCredits) {
 		double TCH = 0;
-		for (int i = 0; i < courseCredits.size(); i++) {
-			TCH = TCH + courseCredits.get(i);
+		for (double courseCredit : courseCredits) {
+			TCH += courseCredit;
 		}
 		return TCH;
 	}

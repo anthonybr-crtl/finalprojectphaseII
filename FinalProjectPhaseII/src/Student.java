@@ -32,34 +32,19 @@ public class Student {
 		 courseCredits.remove(index);
 	} 
 	
-	// Get course names. 
+	// Get course names. No setter because addCourse() and removeCourse() should be used instead. 
 	public ArrayList<String> getCourseNames() {
 		return courseNames;
 	}
 	
-	// Set course names.
-	public void setCourseNames(ArrayList<String> newCourseNames) {
-		courseNames = newCourseNames;
-	}
-	
-	// Get number grades.
+	// Get number grades. No setter because addCourse() and removeCourse() should be used instead. 
 	public ArrayList<Double> getNumberGrades() {
 		return numberGrades;
 	}
 	
-	// Set number grades.
-	public void setNumberGrades(ArrayList<Double> newNumberGrades) {
-		numberGrades = newNumberGrades;
-	}
-	
-	// Get course credits.
+	// Get course credits. No setter because addCourse() and removeCourse() should be used instead. 
 	public ArrayList<Double> getCourseCredits() {
 		return courseCredits;
-	}
-	
-	// Set course credits. 
-	public void setCourseCredits(ArrayList<Double> newCourseCredits) {
-		
 	}
 	
 	// Uses GPACalulator class to calculate GPA.
