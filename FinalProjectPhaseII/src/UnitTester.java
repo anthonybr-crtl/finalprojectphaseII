@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class UnitTester {
 	public static void main(String[] args) {
 		// Create three objects to test. 
-		Student student = new Student();
+		Student student = new Student("Fred");
 		Course course = new Course();
 		GPACalculator gpacalc = new GPACalculator(); 
 		
@@ -15,9 +15,24 @@ public class UnitTester {
 			testMinCreditHours(course);
 			testMaxCreditHours(course);
 			testGradeConversion();
+			System.out.println();
+			runScenario();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+	
+	// Simulates a bunch of specific user interactions to see if the results make sense. 
+	public static void runScenario() {
+		Student student = new Student("Bob");
+		student.addCourse("Math", 2.0, true, 97, "A");
+		student.addCourse("Science", 2.0, false, 0, "A");
+		student.addCourse("Social Studies", 2.0, true, 50, "F");
+		student.removeCourse("Social Studies");
+		System.out.println("Course names: " + student.getCourseNames());
+		System.out.println("Number grades: " + student.getNumberGrades());
+		System.out.println("Course Credits: " + student.getCourseCredits());
+		System.out.println("Your GPA is: " + student.getGPA());
 	}
 
 	// Test set/get credit hours methods.

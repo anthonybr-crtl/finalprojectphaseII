@@ -15,9 +15,9 @@ public class GPACalculator {
 		for (int i = 0; i < numberGrades.size(); i++) {
 			double GPAP = 0;
 			double numberGrade = numberGrades.get(i);
-			GPAP = scaleToFour(numberGrade);
+			GPAP = scaleToFour(numberGrade); // Scale from 0-100 to 0-4.
 			GPAP *= courseCredits.get(i); // Weight grade by credits. 
-			TQP += GPAP;
+			TQP += GPAP; // Add GPA points from this class to the total of quality points. 
 		}
 		return TQP;
 	}

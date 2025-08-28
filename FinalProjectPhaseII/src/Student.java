@@ -2,9 +2,17 @@ import java.util.ArrayList;
 
 public class Student {
 	// ArrayLists to store a course along with it's credit hours and number grade.
-	private static ArrayList<String> courseNames = new ArrayList<>();
-	private static ArrayList<Double> numberGrades = new ArrayList<>();
-	private static ArrayList<Double> courseCredits = new ArrayList<>();
+	private ArrayList<String> courseNames = new ArrayList<>();
+	private ArrayList<Double> numberGrades = new ArrayList<>();
+	private ArrayList<Double> courseCredits = new ArrayList<>();
+	// Stuident name.
+	String name;
+	
+	// Constructor to choose student name on initialization. 
+	Student(String name) {
+		this.name = name;
+	}
+
 	
 	// Method used to add a course. Parameters include a Course Name, credit hours, a number grade, and a letter grade. 
 	// The boolean is used to determine whether someone is submitting a number or letter grade. 
@@ -14,7 +22,7 @@ public class Student {
     public void addCourse (String courseName, double creditHours, boolean hasNumberGrade, double numberGrade, String letterGrade) {
 		 Course course = new Course();
 		 course.setCreditHours(creditHours);
-		 if (hasNumberGrade == true) {
+		 if (hasNumberGrade) {
 			 course.setNumberGrade(numberGrade);
 		 } else {
 			 course.setNumberGrade(Course.convertLetterGradeToNumeric(letterGrade));
