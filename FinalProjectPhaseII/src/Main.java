@@ -36,6 +36,7 @@ public class Main {
 			System.out.println("What is the student's name? ");
 			String name = scanner.nextLine();
 			students.add(new Student(name));
+			System.out.println("Student added successfully!");
 		} else if ((choice.equals("enroll")) || (choice.equals("e"))) {
 			// Creates a new course and enrolls a student in it. 
 			// Will also create a new student if their name is not found.
@@ -48,19 +49,22 @@ public class Main {
 			String courseName = scanner.nextLine();
 			System.out.println("How many credits is the course worth? ");
 			double credits = scanner.nextDouble();
-			System.out.println("Does the class have a number grade? ");
+			System.out.println("Does the class have a number grade? Please enter 'true' or 'false'. ");
 			boolean hasNumberGrade = scanner.nextBoolean(); 
 			if (hasNumberGrade) {
-				System.out.println("What is the student's number grade? ");
+				System.out.println("What is the student's number grade? Values between 0 and 100 only please.");
 				numberGrade = scanner.nextDouble();
+				scanner.nextLine(); // Clear newlines from buffer to prevent errors. 
 				letterGrade = Course.convertNumericGradeToLetter(numberGrade);
 			} else {
-				System.out.println("What is the student's letter grade? ");
+				scanner.nextLine(); // Clear newlines from buffer to prevent errors. 
+				System.out.println("What is the student's letter grade? F to A+ only please.");
 				letterGrade = scanner.nextLine();
 				numberGrade = Course.convertLetterGradeToNumeric(letterGrade);
 			}
 			// Create new course and enroll student in it. 
 			student.addCourse(courseName, credits, hasNumberGrade, numberGrade, letterGrade);
+			System.out.println("Course added successfully!");
 		} else if ((choice.equals("drop")) || (choice.equals("d"))) {
 			// Drop a student from a course. 
 			System.out.println("What is the student's name? ");
@@ -69,26 +73,28 @@ public class Main {
 			System.out.println("What is the course's name? ");
 			String courseName = scanner.nextLine();
 			student.removeCourse(courseName);
+			System.out.println("Course dropped successfully!");
 		} else if ((choice.equals("grade")) || (choice.equals("g"))) {
 			// Calculate a student's GPA. 
 			System.out.println("What is the name of the student you want to calculate GPA for? ");
 			String studentName = scanner.nextLine();
 			Student student = findStudent(studentName);
-			student.getGPA();
+			System.out.println(studentName + "'s GPA is " + student.getGPA() + ".");
 		} else if ((choice.equals("quit")) || (choice.equals("q"))) {
 			// Quit.
 			scanner.close();
 			System.exit(0);
 		} else {
 			// Error handling.
-			System.out.println("Sorry, " + choice + " isn't one of the menu options. Type 'h' for help.");
+			System.out.println("Sorry, " + choice + " isn't one of the menu options.");
 		}
+		System.out.println("Feel free to type another option or type 'h' for help.");
 	}
 	
 	// Attempts to find a student by the specified name. Creates a new one if none exists. 
 	public static Student findStudent(String name) {
 		for (Student student : students) {
-			if (student.name == name) {
+			if (student.name.equals(name)) {
 				return student; // Found them!
 			} 
 		}	
@@ -99,16 +105,4 @@ public class Main {
 		return student; 
 	}
 }
-
-// Simulates a bunch of specific user interactions to see if the results make sense. 
-//public static void runScenario() {
-//	Student student = new Student();
-//	student.addCourse("Math", 2.0, true, 97, "A");
-//	student.addCourse("Science", 2.0, false, 0, "A");
-//	student.addCourse("Social Studies", 2.0, true, 50, "F");
-//	student.removeCourse("Social Studies");
-//	System.out.println("Course names: " + student.getCourseNames());
-//	System.out.println("Number grades: " + student.getNumberGrades());
-//	System.out.println("Course Credits: " + student.getCourseCredits());
-//	System.out.println("Your GPA is: " + student.getGPA());
 //}
